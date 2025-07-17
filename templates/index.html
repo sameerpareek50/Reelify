@@ -1,0 +1,53 @@
+<!-- filepath: s:\Projects\Reelify\templates\index.html -->
+{% extends "base.html" %}
+
+{% block title %}Reelify - Premium Reels{% endblock %}
+
+{% block content %}
+<section class="hero-section text-center">
+    <div class="container">
+        <h1 class="hero-title">Create <span class="gradient-text">Stunning Reels</span> Effortlessly</h1>
+        <p class="hero-subtitle">AI-powered, beautifully crafted, and ready to share. Welcome to the next level of creativity.</p>
+        <a href="/create" class="cta-button">Start Creating</a>
+    </div>
+</section>
+<section class="features-section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card glass-card">
+                    <i class="fas fa-magic feature-icon"></i>
+                    <h3>AI Editing</h3>
+                    <p>Smart, automatic enhancements for every video.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card glass-card">
+                    <i class="fas fa-film feature-icon"></i>
+                    <h3>Seamless Transitions</h3>
+                    <p>Fluid, cinematic cuts and effects at your fingertips.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card glass-card">
+                    <i class="fas fa-music feature-icon"></i>
+                    <h3>Music & Voice</h3>
+                    <p>Add trending tracks or your own voiceover in seconds.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="showcase-section">
+    <div class="container">
+        <h2 class="showcase-title">Featured Reels</h2>
+        <div class="image-grid">
+            <img src="{{ url_for('static', filename='1.jpg') }}" alt="Reel 1" class="showcase-image glass-img">
+            <img src="{{ url_for('static', filename='2.jpg') }}" alt="Reel 2" class="showcase-image glass-img">
+            <img src="{{ url_for('static', filename='3.jpg') }}" alt="Reel 3" class="showcase-image glass-img">
+            <img src="{{ url_for('static', filename='4.jpg') }}" alt="Reel 4" class="showcase-image glass-img">
+            <img src="{{ url_for('static', filename='5.jpg') }}" alt="Reel 5" class="showcase-image glass-img">
+        </div>
+    </div>
+</section>
+{% endblock %}
