@@ -1,0 +1,4 @@
+file 'Screenshot (25).png'
+duration 1
+file 'Screenshot 2025-07-11 170635.png'
+duration 1

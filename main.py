@@ -31,6 +31,7 @@ def create():
         print(request.files.keys())
         rec_id = request.form.get("uuid")   # received unique id
         desc = request.form.get("text")      # Description
+        input_files = []
         for key,value in request.files.items():
             print(f"Key: {key}, Value: {value}")
             # key is file1, file2 etc   and value is the file name like image name
@@ -43,13 +44,22 @@ def create():
                     # if the folder does not exist, create it
                     os.mkdir(os.path.join(app.config['UPLOAD_FOLDER'], rec_id))
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'],rec_id,  filename))
-   # joining the upload folder with the unique id and the file name
+   # joining the upload folder with the unique id and the file 
+   
+                input_files.append(file.filename)
+                print(file.filename)
+        # Now we will create a text file called input.txt inside the folder
             
             # Capture the description and save it to a file
             with open(os.path.join(app.config['UPLOAD_FOLDER'], rec_id, "desc.txt"), "w") as f:
-                f.write(desc)
+                f.write(desc)        
  # I am taking the upload folder and rec_id with it and then writing the description to a file called desc.txt which user has typed     
  # so that we can use it later for the AI model to generate the voiceover
+
+        for fl in input_files:
+            with open(os.path.join(app.config['UPLOAD_FOLDER'], rec_id,  "input.txt"), "a") as f:
+                f.write(f"file '{fl}'\nduration 1\n")
+
 
     return render_template("create.html", myid=myid)
 
@@ -59,8 +69,9 @@ def create():
 
 @app.route("/gallery")
 def gallery():
-    return render_template("gallery.html")
+    reels = os.listdir("static/reels")
+    print(reels)
+    return render_template("gallery.html", reels=reels)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+app.run(debug=True)
     
