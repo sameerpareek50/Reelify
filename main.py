@@ -36,6 +36,12 @@ def create():
                     os.mkdir(os.path.join(app.config['UPLOAD_FOLDER'], rec_id))
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'],rec_id,  filename))
    # joining the upload folder with the unique id and the file name
+            
+            # Capture the description and save it to a file
+            with open(os.path.join(app.config['UPLOAD_FOLDER'], rec_id, "desc.txt"), "w") as f:
+                f.write(desc)
+ # I am taking the upload folder and rec_id with it and then writing the description to a file called desc.txt which user has typed     
+ # so that we can use it later for the AI model to generate the voiceover
 
     return render_template("create.html", myid=myid)
 
