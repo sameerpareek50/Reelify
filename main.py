@@ -1,6 +1,7 @@
 from flask import Flask, render_template , request
 import uuid # provide uniques id to all different folders
 from werkzeug.utils import secure_filename
+import os 
 
 UPLOAD_FOLDER = 'user_uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -24,8 +25,17 @@ def create():
         desc = request.form.get("text")      # Description
         for key,value in request.files.items():
             print(f"Key: {key}, Value: {value}")
-            # upload the file
             # key is file1, file2 etc   and value is the file name like image name
+            
+            # upload the file
+            file = request.files[key]
+            if file:
+                filename = secure_filename(file.filename)
+                if(not(os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'], rec_id)))):
+                    # if the folder does not exist, create it
+                    os.mkdir(os.path.join(app.config['UPLOAD_FOLDER'], rec_id))
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'],rec_id,  filename))
+   # joining the upload folder with the unique id and the file name
 
     return render_template("create.html", myid=myid)
 
