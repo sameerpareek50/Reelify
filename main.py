@@ -10,9 +10,17 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
+
+
 @app.route("/")
 def home():
     return render_template("index.html") 
+
+
+# The button of "create reel" on create page will send POST request to our flask
+# end point and this end point will upload all the files to a folder and saving
+# the description to a text file in that folder
+# The folder will be named with a unique id so that we can use it later for AI
 
 @app.route("/create", methods=["GET", "POST"])
 def create():
@@ -44,6 +52,9 @@ def create():
  # so that we can use it later for the AI model to generate the voiceover
 
     return render_template("create.html", myid=myid)
+
+
+
 
 
 @app.route("/gallery")
