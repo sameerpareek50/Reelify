@@ -1,0 +1,14 @@
+file '1.png'
+duration 1
+file '2.png'
+duration 1
+file '3.png'
+duration 1
+file '4.png'
+duration 1
+file '5.png'
+duration 1
+file '6.png'
+duration 1
+file '7.png'
+duration 1

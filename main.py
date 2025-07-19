@@ -73,5 +73,7 @@ def gallery():
     print(reels)
     return render_template("gallery.html", reels=reels)
 
+# This would add the reels to the static folder so that we can access them later in gallery of website
+
 app.run(debug=True)
     
