@@ -11,6 +11,7 @@ import os
 from text_to_audio import text_to_speech_file
 import time
 import subprocess
+import sys
 
 
 def text_to_audio(folder):
@@ -26,7 +27,11 @@ def create_reel(folder):
     
     print("CR - ", folder)
 
-if __name__ == "__main__":
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: python generate_process.py <rec_id>")
+        sys.exit(1)
+    rec_id = sys.argv[1]
     while True:
         print("Processing queue...")
         with open("done.txt", "r") as f: #done.txt contains the folders that are already processed means reels are made
@@ -42,3 +47,6 @@ if __name__ == "__main__":
                 with open("done.txt", "a") as f:
                     f.write(folder + "\n")
         time.sleep(4)
+
+if __name__ == "__main__":
+    main()

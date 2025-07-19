@@ -12,12 +12,22 @@
         <div class="upload-container glass-card">
             <h1 class="upload-title">Create Your Reel</h1>
             <p class="upload-instructions">Upload your video and add a voiceover. Experience premium AI editing.</p>
+            {% if error %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endif %}
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
             <form action="/create" enctype="multipart/form-data" method="post" class="dropzone" id="myDropzone">
                 <div class="fallback">
                     <div id="fileInputs">
                         <div class="file-input-group">
                             <input name="file1" type="file" class="file-input" />
-                            <input name ="uuid" type="hidden" value="{{ myid }}" />
+                            <input name="uuid" type="hidden" value="{{ myid }}" />
                             <button type="button" class="remove-file-btn" onclick="removeFileInput(this)" disabled>×</button>
                         </div>
                     </div>
