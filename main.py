@@ -164,6 +164,12 @@ def gallery():
 # This would add the reels to the static folder so that we can access them later in gallery of website
 
 if __name__ == "__main__":
+
+        #These below three lines are used when i want to deploy my website
     import os
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
+
+    # This below line needs to be run when i want to run website locally
+
+    #app.run(debug=True)  # For local development, set debug=True

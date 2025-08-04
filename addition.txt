@@ -1,0 +1,33 @@
+4 August 2025 : 
+Mene do teen changes kre for saving my eleven labs api key from others
+
+pehle config.py naam ki file m jo bhi likha hua tha wo hata kr .env file m likh diya
+
+ab jab content hatt gya toh api key call krne k liye text_to_audio.py file m bhi changes kre jo the:
+        Removed this "from config import ELEVENLABS_API_KEY"
+                        client = ElevenLabs(
+                            api_key='ELEVENLABS_API_KEY',
+                        )
+
+
+        and added 
+                    load_dotenv()
+
+# api_key = os.getenv('ELEVENLABS_API_KEY')
+
+# Ensure the API key exists
+if not api_key:
+    raise ValueError("ELEVENLABS_API_KEY not found in .env file or environment variables.")
+
+client = ElevenLabs(
+    api_key= os.getenv('ELEVENLABS_API_KEY'),   # earlier it was api_key='ELEVENLABS_API_KEY',
+)
+
+
+
+
+Secondly agar server ko locally chalana h toh remove     import os
+    these lines from main.py                             port = int(os.environ.get("PORT", 5000))
+                                                         app.run(host="0.0.0.0", port=port, debug=True)
+
+     And added                                           app.run(debug=True)

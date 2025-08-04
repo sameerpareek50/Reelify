@@ -1,13 +1,16 @@
-
 import os
 import uuid
 from elevenlabs import VoiceSettings
 from elevenlabs.client import ElevenLabs
-from config import ELEVENLABS_API_KEY
+# This below line is written to hide api key by adding it to .env file
+# from config import ELEVENLABS_API_KEY
+from dotenv import load_dotenv
 
- 
+# Load environment variables from .env file
+load_dotenv()
+
 client = ElevenLabs(
-    api_key=ELEVENLABS_API_KEY,
+    api_key= os.getenv('ELEVENLABS_API_KEY'),   # earlier it was api_key='ELEVENLABS_API_KEY',
 )
 
 
