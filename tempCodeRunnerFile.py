@@ -1,1 +1,1 @@
-text_to_speech_file
+app.run(debug=True)  # For local development, set debug=True

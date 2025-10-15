@@ -2,8 +2,13 @@
     padding: 2rem 0;
 }
 
-.gallery-grid video{
-    height: 777px;
+.gallery-grid video {
+    height: 400px;
+    border-radius: 18px;
+    border: 1.5px solid var(--glass-border);
+    box-shadow: 0 2px 12px #4bb6b222;
+    background: var(--glass-bg);
+    animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1);
 }
 
 .gallery-title {
@@ -12,6 +17,7 @@
     color: var(--primary);
     font-weight: 700;
     letter-spacing: 1px;
+    animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1);
 }
 
 .gallery-grid {
